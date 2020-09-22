@@ -20,7 +20,7 @@
 hs_err_pid*
 
 # IDEA
-.idea
+.idea/*
 
 *.DS_Store
 

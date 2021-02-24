@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class HashStrategy implements LoadBalanceStrategy {
     @Override
-    public String execute(List<String> serviceList) {
+    public String choose(List<String> serviceList) {
 
         return null;
     }

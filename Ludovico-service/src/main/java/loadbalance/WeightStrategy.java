@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class WeightStrategy implements LoadBalanceStrategy {
     @Override
-    public String execute(List<String> serviceList) {
+    public String choose(List<String> serviceList) {
         return null;
     }
 }

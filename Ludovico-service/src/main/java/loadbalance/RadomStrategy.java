@@ -12,7 +12,7 @@ import java.util.List;
 public class RadomStrategy implements LoadBalanceStrategy {
 
     @Override
-    public String execute(List<String> serviceList) {
+    public String choose(List<String> serviceList) {
         return RandomUtils.getRandomResult(serviceList);
     }
 }

@@ -21,7 +21,7 @@ public class LoadBalance {
             this.loadBalanceStrategy = new LoopStrategy();
         } else if ("weight".equals(loadBalanceConfig)) {
             this.loadBalanceStrategy = new WeightStrategy();
-        } else if("hash".equals(loadBalanceConfig)){
+        } else if ("hash".equals(loadBalanceConfig)) {
             this.loadBalanceStrategy = new HashStrategy();
         }
     }
@@ -29,7 +29,10 @@ public class LoadBalance {
     private LoadBalanceStrategy loadBalanceStrategy;
 
     public InetSocketAddress select(List<String> serviceList) {
-        return AddressUtils.toInetSocketAddress(loadBalanceStrategy.execute(serviceList));
+        if (serviceList.size() == 1) {
+            return AddressUtils.toInetSocketAddress(serviceList.get(0));
+        }
+        return AddressUtils.toInetSocketAddress(loadBalanceStrategy.choose(serviceList));
     }
 
 }

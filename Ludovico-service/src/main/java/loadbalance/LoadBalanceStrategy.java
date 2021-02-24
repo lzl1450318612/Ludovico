@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface LoadBalanceStrategy {
 
-    String execute(List<String> serviceList);
+    String choose(List<String> serviceList);
 
 
 }

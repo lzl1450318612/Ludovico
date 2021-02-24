@@ -15,7 +15,7 @@ public class LoopStrategy implements LoadBalanceStrategy {
     private AtomicInteger atomicInteger = new AtomicInteger(0);
 
     @Override
-    public String execute(List<String> serviceList) {
+    public String choose(List<String> serviceList) {
         if (CollectionUtils.isEmpty(serviceList)) {
             return "";
         }

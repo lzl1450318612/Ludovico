@@ -3,6 +3,7 @@ package serviceDiscovery.zk;
 import loadbalance.LoadBalance;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import serviceDiscovery.ServiceDiscovery;
 import utils.SingletonUtils;
 import utils.ZkUtils;
@@ -49,6 +50,10 @@ public class ZkServiceDiscovery implements ServiceDiscovery {
             return serviceAddressMap.get(serviceName);
         }
         List<String> serviceList = ZkUtils.getChildNodes("/" + serviceName);
+        if (CollectionUtils.isEmpty(serviceList)) {
+            log.warn("Service is not found from service register center!");
+            return null;
+        }
         return loadBalance.select(serviceList);
     }
 }
